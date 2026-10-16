@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { Viewer } from './core/viewer';
 import { Tracker } from './gestures/tracker';
 import { GestureControl } from './gestures/control';
-import { MANIFEST, type ManifestEntry } from './featured/manifest';
+import { MANIFEST, prettyName, type ManifestEntry } from './featured/manifest';
 import { builders } from './featured/procedural';
 import { ScanClient } from './scan/scanClient';
 
@@ -42,8 +42,18 @@ async function loadFeatured(m: ManifestEntry) {
   current = m;
   scanMode = false;
   scan.points.visible = false;
-  if (m.file) await viewer.loadGLB(m.file);
-  else if (m.procedural && builders[m.procedural]) viewer.loadGroup(builders[m.procedural]());
+  // Source chain: local cache -> CDN -> fallback host -> procedural.
+  // Real dataset models load first; procedural only if downloads fail (offline).
+  const urls = [m.local, m.file, m.fileFallback].filter(Boolean) as string[];
+  let loaded = false;
+  for (const u of urls) {
+    try { await viewer.loadGLB(u); loaded = true; break; }
+    catch { /* try next source */ }
+  }
+  if (!loaded) {
+    if (m.procedural && builders[m.procedural]) viewer.loadGroup(builders[m.procedural]());
+    else { viewer.clear(); }
+  }
   renderGallery();
   const sel = $('isolateSel') as HTMLSelectElement;
   sel.innerHTML = '<option value="">All parts</option>' + viewer.partNames().map(n => `<option>${n}</option>`).join('');
@@ -92,7 +102,8 @@ control.onPoint = (x, y) => {
     tip.style.display = 'block';
     tip.style.left = (x * viewerEl.clientWidth) + 'px';
     tip.style.top = (y * viewerEl.clientHeight) + 'px';
-    tip.textContent = p ? `${p.label}: ${p.info}` : name;
+    // Dataset models have no curated parts: fall back to the real mesh name.
+    tip.textContent = p ? `${p.label}: ${p.info}` : `${prettyName(name)} (${current.title})`;
   } else tip.style.display = 'none';
 };
 control.onSlice = (v) => {

@@ -3,3 +3,10 @@ node_modules/
 dist/
 *.pyc
 backend/storage/scans/*.glb
+# dataset GLBs fetched via scripts/fetch_models.py (not committed; app uses CDN without them)
+frontend/public/models/brainstem.glb
+frontend/public/models/engine.glb
+frontend/public/models/helmet.glb
+frontend/public/models/boombox.glb
+frontend/public/models/fish.glb
+frontend/public/models/toycar.glb

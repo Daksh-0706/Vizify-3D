@@ -17,10 +17,17 @@ meshing runs once at `stop_scan` (Open3D CPU). This fits 6GB VRAM trivially
 (stub ≈ 0 VRAM, Open3D Poisson ≈ CPU RAM only).
 Record here: backend=___, fps=___, vram=___ (nvidia-smi), decision=___.
 
-## D4 — Procedural featured models first
-Why: guaranteed named parts, zero license risk, offline runnable, <200k tris.
-Real CC0 GLBs (BodyParts3D, NIH 3D, NASA) can replace any manifest entry via
-`file:` with no code change. See MODEL_PREP.md.
+## D4 — Real dataset models first, procedural only for gaps
+Featured library loads from KhronosGroup glTF-Sample-Models (single-file GLB,
+1.8–12.5MB each, inside the 20MB budget) via jsDelivr CDN with a
+raw.githubusercontent fallback and a local cache (`scripts/fetch_models.py`).
+Load chain per entry: local -> file -> fileFallback -> procedural, so the app
+never breaks offline. Labels/isolate on dataset models use their real mesh
+names (auto). Procedural kept only where the dataset has no fit: architecture
+(Sponza has no single-file GLB and is far over budget; house needs custom
+floors for slice/fly) and geology (MosquitoInAmber is 24MB, over budget).
+License: per-model terms live in the source repo — verify each entry before
+any public deployment (see docs/CREDITS.md).
 
 ## D5 — One viewer, one gesture layer, mode switch
 Scan mode hides inspection tools (shell has no interior). Featured enables tools

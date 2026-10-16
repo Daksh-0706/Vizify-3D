@@ -2,7 +2,7 @@
 
 Hands-free 3D viewer: control models entirely with webcam hand gestures. Two modes, one app.
 
-- **Featured mode**: 8 procedural models (anatomy, machines, space, electronics, biology, architecture, vehicles, geology) with explode, x-ray, cross-section, part isolation, labels, fly-inside — driven by `models/manifest.json` (no code change to add a model).
+- **Featured mode**: 6 real dataset models (KhronosGroup glTF-Sample-Models: brain stem, 2-cylinder engine, helmet, boombox, fish, toy car) + 2 procedural (section house, volcano) with explode, x-ray, cross-section, part isolation, labels, fly-inside — driven by `models/manifest.json` (no code change to add a model).
 - **Scan mode**: FastAPI backend (WS live frames + HTTP video upload) → live point cloud → Poisson/fallback meshing → GLB auto-loads in the same viewer. External controls only (shell has no interior).
 
 ## Quickstart
