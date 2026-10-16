@@ -1,0 +1,20 @@
+export interface PartInfo { label: string; info: string; layer?: string }
+export interface ManifestEntry {
+  id: string; category: string; title: string;
+  file?: string;            // bundled GLB (optional if procedural)
+  procedural?: string;      // builder key (no download needed)
+  author: string; license: string; source: string;
+  tools: string[];          // isolate,xray,slice,labels,explode,fly
+  parts: Record<string, PartInfo>;
+  explode: { mode: string; strength: number };
+}
+export const MANIFEST: ManifestEntry[] = [
+  { id: 'heart', category: 'anatomy', title: 'Human Heart', procedural: 'heart', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','xray','slice','labels','explode'], parts: { atrium: { label: 'Atrium', info: 'Receives blood into the heart.' }, ventricle: { label: 'Ventricle', info: 'Pumps blood out under pressure.' }, aorta: { label: 'Aorta', info: 'Largest artery; carries oxygenated blood.' } }, explode: { mode: 'radial', strength: 1.2 } },
+  { id: 'engine', category: 'machines', title: 'Engine Block', procedural: 'engine', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','xray','slice','labels','explode'], parts: { block: { label: 'Block', info: 'Main crankcase casting.' }, piston: { label: 'Piston', info: 'Reciprocates in the bore.' }, head: { label: 'Head', info: 'Valves + combustion chamber.' } }, explode: { mode: 'radial', strength: 1.6 } },
+  { id: 'solar', category: 'space', title: 'Solar System', procedural: 'solar', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','labels','explode'], parts: { sun: { label: 'Sun', info: 'G-type star, 99.8% of system mass.' }, earth: { label: 'Earth', info: 'Only known life-bearing planet.' }, mars: { label: 'Mars', info: 'Thin CO2 atmosphere.' } }, explode: { mode: 'radial', strength: 1.0 } },
+  { id: 'phone', category: 'electronics', title: 'Phone Teardown', procedural: 'phone', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','xray','labels','explode'], parts: { screen: { label: 'Display', info: 'OLED stack.' }, battery: { label: 'Battery', info: 'Li-ion pouch cell.' }, board: { label: 'Mainboard', info: 'SoC + radios.' } }, explode: { mode: 'radial', strength: 1.8 } },
+  { id: 'cell', category: 'biology', title: 'Animal Cell', procedural: 'cell', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','xray','slice','labels','explode'], parts: { nucleus: { label: 'Nucleus', info: 'Stores DNA.' }, mito: { label: 'Mitochondrion', info: 'ATP production.' }, membrane: { label: 'Membrane', info: 'Selective barrier.' } }, explode: { mode: 'radial', strength: 1.4 } },
+  { id: 'house', category: 'architecture', title: 'Section House', procedural: 'house', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','slice','labels','explode','fly'], parts: { roof: { label: 'Roof', info: 'Removable for plan view.' }, floor1: { label: 'Floor 1', info: 'Living spaces.' }, floor2: { label: 'Floor 2', info: 'Bedrooms.' } }, explode: { mode: 'radial', strength: 1.5 } },
+  { id: 'car', category: 'vehicles', title: 'Car Cutaway', procedural: 'car', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','xray','labels','explode'], parts: { body: { label: 'Body', info: 'Monocoque shell.' }, wheel: { label: 'Wheel', info: 'Tire + rim.' }, motor: { label: 'Motor', info: 'Drive unit.' } }, explode: { mode: 'radial', strength: 1.5 } },
+  { id: 'volcano', category: 'geology', title: 'Volcano + Lattice', procedural: 'volcano', author: 'GestureView procedural (CC0)', license: 'CC0', source: '', tools: ['isolate','slice','xray','labels','explode'], parts: { cone: { label: 'Cone', info: 'Stratified ash + lava.' }, chamber: { label: 'Magma chamber', info: 'Molten reservoir.' }, crystal: { label: 'Crystal', info: 'Ordered lattice (zoom).' } }, explode: { mode: 'radial', strength: 1.3 } },
+];

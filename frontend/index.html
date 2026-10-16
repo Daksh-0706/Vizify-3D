@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GestureView 3D</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header>
+    <h1>GestureView 3D</h1>
+    <nav id="modeSwitch">
+      <button data-mode="featured" class="active">Featured</button>
+      <button data-mode="scan">Scan</button>
+      <button data-mode="tutorial">Tutorial</button>
+    </nav>
+    <div id="status">
+      <span id="stMode">featured</span> ·
+      <span id="stGesture">none</span> ·
+      <span id="stClutch">control: OFF</span> ·
+      <span id="stFps">-- fps</span>
+    </div>
+  </header>
+  <main>
+    <section id="galleryPanel">
+      <div id="catFilter"></div>
+      <div id="gallery"></div>
+      <div id="credits"></div>
+    </section>
+    <section id="viewerWrap">
+      <div id="viewer"></div>
+      <div id="labelTip"></div>
+      <div id="tools">
+        <label>Explode <input id="explodeRange" type="range" min="0" max="2" step="0.01" value="0" /></label>
+        <label>Slice <input id="sliceRange" type="range" min="-1.5" max="1.5" step="0.01" value="1.5" /></label>
+        <button id="xrayBtn">X-ray: off</button>
+        <select id="isolateSel"><option value="">All parts</option></select>
+        <button id="flyBtn">Fly inside</button>
+        <button id="resetBtn">Reset view</button>
+      </div>
+      <div id="scanPanel" hidden>
+        <button id="scanStart">Start scan (live)</button>
+        <button id="scanStop">Stop + mesh</button>
+        <label>or upload video <input id="scanFile" type="file" accept="video/*" /></label>
+        <div id="scanProg"></div>
+        <h4>My scans</h4>
+        <div id="myScans"></div>
+      </div>
+      <div id="tutorialPanel" hidden>
+        <h3>Hands-free controls</h3>
+        <ul>
+          <li><b>Thumbs-up</b> = clutch on/off (nothing moves unless ON)</li>
+          <li><b>Pinch + move (1 hand)</b> = rotate</li>
+          <li><b>Pinch both hands, spread/close</b> = zoom</li>
+          <li><b>Open palm + move</b> = pan</li>
+          <li><b>Fist</b> = reset view</li>
+          <li><b>Point</b> = hover/select part (featured)</li>
+          <li>Mouse + OrbitControls always works for debugging.</li>
+        </ul>
+        <p>Tip: good light, hand 40–70cm from webcam, slow moves.</p>
+      </div>
+    </section>
+    <aside id="camPanel">
+      <video id="cam" playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div><button id="camBtn">Enable camera + gestures</button></div>
+      <div id="gestureLog"></div>
+    </aside>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

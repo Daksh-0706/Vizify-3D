@@ -1,0 +1,21 @@
+:root { color-scheme: dark; --bg:#0e1116; --panel:#171c24; --acc:#5cc8ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:#e8edf3; font-family: system-ui, sans-serif; }
+header { display:flex; gap:16px; align-items:center; padding:8px 14px; background:var(--panel); flex-wrap:wrap; }
+header h1 { font-size:18px; margin:0; }
+#modeSwitch button, #tools button, #scanPanel button, #camPanel button { background:#222b38; color:#fff; border:1px solid #334; border-radius:8px; padding:6px 10px; cursor:pointer; }
+#modeSwitch button.active { background:var(--acc); color:#00131f; font-weight:700; }
+main { display:grid; grid-template-columns: 300px 1fr 260px; gap:10px; padding:10px; min-height: calc(100vh - 52px); }
+#galleryPanel, #camPanel { background:var(--panel); border-radius:12px; padding:10px; }
+#gallery { display:grid; gap:8px; max-height:60vh; overflow:auto; }
+.card { background:#222b38; border-radius:10px; padding:8px; cursor:pointer; border:2px solid transparent; }
+.card.sel { border-color: var(--acc); }
+.card small { opacity:.75; }
+#viewerWrap { position:relative; background:#000; border-radius:12px; overflow:hidden; min-height:60vh; }
+#viewer { width:100%; height:62vh; }
+#labelTip { position:absolute; pointer-events:none; background:#000c; padding:4px 8px; border-radius:6px; display:none; }
+#tools { display:flex; gap:10px; flex-wrap:wrap; padding:8px; background:var(--panel); align-items:center; }
+#cam { width:100%; border-radius:8px; background:#000; }
+#overlay { width:100%; margin-top:-4px; }
+#status { margin-left:auto; font-size:13px; opacity:.9; }
+@media (max-width: 1000px){ main{ grid-template-columns:1fr; } }

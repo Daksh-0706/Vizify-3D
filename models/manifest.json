@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "notes": "Adding a model needs no code change: drop GLB in frontend/public/models/ (or use procedural key) and append an entry here. Mirror kept for docs; app imports frontend manifest at build.",
+  "models": [
+    { "id": "heart", "category": "anatomy", "title": "Human Heart", "procedural": "heart", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "xray", "slice", "labels", "explode"] },
+    { "id": "engine", "category": "machines", "title": "Engine Block", "procedural": "engine", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "xray", "slice", "labels", "explode"] },
+    { "id": "solar", "category": "space", "title": "Solar System", "procedural": "solar", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "labels", "explode"] },
+    { "id": "phone", "category": "electronics", "title": "Phone Teardown", "procedural": "phone", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "xray", "labels", "explode"] },
+    { "id": "cell", "category": "biology", "title": "Animal Cell", "procedural": "cell", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "xray", "slice", "labels", "explode"] },
+    { "id": "house", "category": "architecture", "title": "Section House", "procedural": "house", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "slice", "labels", "explode", "fly"] },
+    { "id": "car", "category": "vehicles", "title": "Car Cutaway", "procedural": "car", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "xray", "labels", "explode"] },
+    { "id": "volcano", "category": "geology", "title": "Volcano + Lattice", "procedural": "volcano", "author": "GestureView procedural (CC0)", "license": "CC0", "tools": ["isolate", "slice", "xray", "labels", "explode"] }
+  ]
+}
